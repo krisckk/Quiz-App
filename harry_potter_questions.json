@@ -1,0 +1,38 @@
+[
+    {
+        "question": "What house is Harry Potter in?",
+        "answers": [
+            { "text": "Gryffindor", "correct": true },
+            { "text": "Slytherin", "correct": false },
+            { "text": "Hufflepuff", "correct": false },
+            { "text": "Ravenclaw", "correct": false }
+        ]
+    },
+    {
+        "question": "Who is Harry's godfather?",
+        "answers": [
+            { "text": "Sirius Black", "correct": true },
+            { "text": "Remus Lupin", "correct": false },
+            { "text": "Severus Snape", "correct": false },
+            { "text": "Albus Dumbledore", "correct": false }
+        ]
+    },
+    {
+        "question": "What position does Harry play in Quidditch?",
+        "answers": [
+            { "text": "Beater", "correct": false },
+            { "text": "Seeker", "correct": true },
+            { "text": "Chaser", "correct": false },
+            { "text": "Keeper", "correct": false }
+        ]
+    },
+    {
+        "question": "What is the name of Harry's owl?",
+        "answers": [
+            { "text": "Hedwig", "correct": true },
+            { "text": "Crookshanks", "correct": false },
+            { "text": "Scabbers", "correct": false },
+            { "text": "Fang", "correct": false }
+        ]
+    }
+]

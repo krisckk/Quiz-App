@@ -8,61 +8,89 @@ document.addEventListener("DOMContentLoaded", () => {
     const resultsElement = document.getElementById("results");
     const scoreElement = document.getElementById("score");
     const totalQuestionsElement = document.getElementById("total-questions");
+    const topicContainer = document.getElementById("topic-container");
+    const topic = document.getElementById("topic");
+
+    const hpButton = document.getElementById("harry-potter-btn");
+    const codeButton = document.getElementById("code-quiz-btn");
+    const greekButton = document.getElementById("greek-mythology-btn");
 
     let shuffledQuestions = [];
     let currentQuestionIndex = 0;
     let score = 0;
+    let questions = [];
+    let isStarted = false;
+    let selectedQuizType = '';
 
-    const questions = [
-        {
-            question: "What house is Harry Potter in?",
-            answers: [
-                { text: "Gryffindor", correct: true },
-                { text: "Slytherin", correct: false },
-                { text: "Hufflepuff", correct: false },
-                { text: "Ravenclaw", correct: false }
-            ]
-        },
-        {
-            question: "Who is Harry's godfather?",
-            answers: [
-                { text: "Sirius Black", correct: true },
-                { text: "Remus Lupin", correct: false },
-                { text: "Severus Snape", correct: false },
-                { text: "Albus Dumbledore", correct: false }
-            ]
-        },
-        {
-            question: "What position does Harry play in Quidditch?",
-            answers: [
-                { text: "Beater", correct: false },
-                { text: "Seeker", correct: true },
-                { text: "Chaser", correct: false },
-                { text: "Keeper", correct: false }
-            ]
-        },
-        {
-            question: "What is the name of Harry's owl?",
-            answers: [
-                { text: "Hedwig", correct: true },
-                { text: "Crookshanks", correct: false },
-                { text: "Scabbers", correct: false },
-                { text: "Fang", correct: false }
-            ]
+    // Initialize - hide the topic container until a topic is selected
+    topicContainer.classList.add("hide");
+    
+    async function loadQuestions(quizType) {
+        const urlMap = {
+            'harry_potter': 'harry_potter_questions.json',
+            'code': 'code_questions.json',
+            'greek_mythology': 'greek_mythology_questions.json'
+        };
+        
+        selectedQuizType = quizType;
+        
+        // Update the topic text based on selection
+        switch(quizType){
+            case 'harry_potter':
+                topic.textContent = "Harry Potter General Quiz";
+                break;
+            case 'code':
+                topic.textContent = "Code General Quiz";
+                break;
+            case "greek_mythology":
+                topic.textContent = "Greek Mythology General Quiz";
+                break;
+            default:
+                topic.textContent = "Quiz Topic";
+                break;
         }
-    ];
+        
+        // Make sure the topic container is visible
+        topicContainer.classList.remove("hide");
+        
+        // Enable the start button
+        startButton.disabled = false;
+        
+        try {
+            const response = await fetch(urlMap[quizType]);
+            if (!response.ok) throw new Error('Network response was not ok');
+            questions = await response.json();
+            console.log("Questions loaded", questions);
+            // Don't start the game automatically, just load the questions
+        } catch (error) {
+            console.error("Error loading questions:", error);
+            // If there's an error, show a fallback message
+            topic.textContent = "Error loading quiz. Please try again.";
+        }
+    }
+    
+    hpButton.addEventListener("click", () => loadQuestions('harry_potter'));
+    codeButton.addEventListener("click", () => loadQuestions('code'));
+    greekButton.addEventListener("click", () => loadQuestions('greek_mythology'));
+
+    // Disable start button until a topic is selected
+    startButton.disabled = true;
 
     startButton.addEventListener("click", startGame);
-    nextButton.addEventListener("click", () => {
-        currentQuestionIndex++;
-        setNextQuestion();
-    });
-
+    nextButton.addEventListener("click", handleNextButtonClick);
     restartButton.addEventListener("click", startGame);
 
     function startGame() {
+        // Only start if questions are loaded
+        if (questions.length === 0) {
+            alert("Please select a quiz topic first!");
+            return;
+        }
+        
         startButton.classList.add("hide");
         resultsElement.classList.add("hide");
+        topicContainer.classList.add("hide");
+        isStarted = true;
         shuffledQuestions = questions.sort(() => Math.random() - 0.5);
         currentQuestionIndex = 0;
         score = 0;
@@ -72,9 +100,18 @@ document.addEventListener("DOMContentLoaded", () => {
         setNextQuestion();
     }
 
+    function handleNextButtonClick() {
+        currentQuestionIndex++;
+        setNextQuestion();
+    }
+
     function setNextQuestion() {
         resetState();
-        showQuestion(shuffledQuestions[currentQuestionIndex]);
+        if (shuffledQuestions[currentQuestionIndex]) {
+            showQuestion(shuffledQuestions[currentQuestionIndex]);
+        } else {
+            console.error("No question available at index", currentQuestionIndex);
+        }
     }
 
     function showQuestion(question) {
@@ -105,7 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (correct) score++;
         scoreElement.textContent = score;
 
-        Array.from(answerButtonsElement.children).forEach(button => {
+        [...answerButtonsElement.children].forEach(button => {
             setStatusClass(button, button.dataset.correct === "true");
         });
 

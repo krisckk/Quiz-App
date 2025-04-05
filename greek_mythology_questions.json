@@ -1,0 +1,29 @@
+[
+    {
+        "question": "Who is the king of the Greek gods?",
+        "answers": [
+            { "text": "Poseidon", "correct": false },
+            { "text": "Zeus", "correct": true },
+            { "text": "Hades", "correct": false },
+            { "text": "Apollo", "correct": false }
+        ]
+    },
+    {
+        "question": "Which hero is known for completing 12 labors?",
+        "answers": [
+            { "text": "Odysseus", "correct": false },
+            { "text": "Perseus", "correct": false },
+            { "text": "Heracles", "correct": true },
+            { "text": "Achilles", "correct": false }
+        ]
+    },
+    {
+        "question": "What is the Greek goddess Aphrodite known for?",
+        "answers": [
+            { "text": "War", "correct": false },
+            { "text": "Wisdom", "correct": false },
+            { "text": "Love", "correct": true },
+            { "text": "The Hunt", "correct": false }
+        ]
+    }
+]

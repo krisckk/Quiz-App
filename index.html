@@ -7,23 +7,30 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="quiz-container">
-        <h1>General harry Potter Quiz</h1>
-        <div id="question-container" class="hide">
-            <div id="question">Question</div>
+    <section class="quiz-container">
+        <div class="topic-controls">
+            <button id="harry-potter-btn" class="btn">Harry Potter Quiz</button>
+            <button id="code-quiz-btn" class="btn">Code Quiz</button>
+            <button id="greek-mythology-btn" class="btn">Greek Mythology Quiz</button>
+        </div>
+        <section id="topic-container">
+            <article id="topic">Quiz Topic</article>
+        </section>
+        <section id="question-container" class="hide">
+            <ariticle id="question">Question</ariticle>
             <div id="answer-buttons" class="btn-grid">
                 
             </div>
-        </div>
+        </section>
         <div class="controls">
-            <button id="start-btn" class="start-btn btn">Start Quiz</button>
-            <button id="next-btn" class="next-btn btn hide">Next</button>
+            <button id="start-btn" class="start-btn btn" role="button">Start Quiz</button>
+            <button id="next-btn" class="next-btn btn hide" role="button">Next</button>
         </div>
         <div id="results" class="hide">
             <h2>Your Score: <span id="score">0</span>/<span id="total-questions">0</span></h2>
-            <button id="restart-btn" class="restart-btn btn">Restart Quiz</button>
+            <button id="restart-btn" class="restart-btn btn" role="button">Restart Quiz</button>
         </div>
-    </div>
-    <script src="script.js"></script>
+    </section>
+    <script src="script.js" defer></script>
 </body>
 </html>

@@ -1,0 +1,74 @@
+[
+    {
+        "question": "What is the time complexity of binary search?",
+        "answers": [
+            { "text": "O(n)", "correct": false },
+            { "text": "O(log n)", "correct": true },
+            { "text": "O(n^2)", "correct": false },
+            { "text": "O(1)", "correct": false }
+        ]
+    },
+    {
+        "question": "Which language is known as the backbone of web development?",
+        "answers": [
+            { "text": "Python", "correct": false },
+            { "text": "HTML", "correct": true },
+            { "text": "Java", "correct": false },
+            { "text": "C#", "correct": false }
+        ]
+    },
+    {
+        "question": "Which data structure uses LIFO order?",
+        "answers": [
+            { "text": "Queue", "correct": false },
+            { "text": "Stack", "correct": true },
+            { "text": "Hash Table", "correct": false },
+            { "text": "Graph", "correct": false }
+        ]
+    },
+    {
+        "question": "What is the output of the following code: console.log(typeof null);",
+        "answers": [
+            { "text": "'null'", "correct": false },
+            { "text": "'object'", "correct": true },
+            { "text": "'undefined'", "correct": false },
+            { "text": "'number'", "correct": false }
+        ]
+    },
+    {
+        "question": "Which of the following is a JavaScript framework?",
+        "answers": [
+            { "text": "Django", "correct": false },
+            { "text": "React", "correct": true },
+            { "text": "Flask", "correct": false },
+            { "text": "Laravel", "correct": false }
+        ]
+    },
+    {
+        "question": "What does CSS stand for?",
+        "answers": [
+            { "text": "Cascading Style Sheets", "correct": true },
+            { "text": "Computer Style Sheets", "correct": false },
+            { "text": "Creative Style Sheets", "correct": false },
+            { "text": "Colorful Style Sheets", "correct": false }
+        ]
+    },
+    {
+        "question": "Which of the following is not a primitive data type in JavaScript?",
+        "answers": [
+            { "text": "String", "correct": false },
+            { "text": "Number", "correct": false },
+            { "text": "Boolean", "correct": false },
+            { "text": "Array", "correct": true }
+        ]
+    },
+    {
+        "question": "Which method is used to add an element to the end of an array in JavaScript?",
+        "answers": [
+            { "text": "push()", "correct": true },
+            { "text": "pop()", "correct": false },
+            { "text": "shift()", "correct": false },
+            { "text": "unshift()", "correct": false }
+        ]
+    }
+]
